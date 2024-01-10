@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class PodcastRemoteDataSource @Inject constructor(private val api: PodcastApi) {
-    fun login(): Flow<UserToken> = flow { api.login() }
+    suspend fun login(): Flow<UserToken> = flow { api.login() }
 
-    fun getPlaylist(token: String): Flow<PlayListResponse> = flow {
+    suspend fun getPlaylist(token: String): Flow<PlayListResponse> = flow {
         api.getPlayList(BEARER_PREFIX.plus(token))
     }
 }

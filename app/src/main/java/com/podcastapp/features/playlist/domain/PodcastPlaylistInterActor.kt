@@ -6,7 +6,7 @@ import javax.inject.Inject
 class PodcastPlaylistInterActor @Inject constructor(
     private val repository: PodcastPlaylistRepository
 ) {
-    fun getPlaylist(): Flow<PlayList> {
+    suspend fun getPlaylist(): Flow<PlayList> {
         return repository.getPlaylist()
     }
 }

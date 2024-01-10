@@ -4,5 +4,5 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface PodcastPlaylistRepository {
-    fun getPlaylist(): Flow<PlayList>
+    suspend fun getPlaylist(): Flow<PlayList>
 }

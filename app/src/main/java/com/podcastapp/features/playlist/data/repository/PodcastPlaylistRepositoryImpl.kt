@@ -14,7 +14,7 @@ class PodcastPlaylistRepositoryImpl @Inject constructor(
     private val remoteDataSource: PodcastRemoteDataSource
 ) : PodcastPlaylistRepository {
     @OptIn(ExperimentalCoroutinesApi::class)
-    override fun getPlaylist(): Flow<PlayList> {
+    override suspend fun getPlaylist(): Flow<PlayList> {
         return remoteDataSource.login()
             .flatMapConcat { remoteDataSource.getPlaylist(it.accessToken) }
             .map { it.map() }
