@@ -20,7 +20,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://staging.podcast.kaitdev.com/client/\"")
+        }
+
         release {
+            buildConfigField("String", "BASE_URL", "\"https://staging.podcast.kaitdev.com/client/\"")
+
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -34,6 +40,14 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    viewBinding {
+        enable = true
     }
 }
 
