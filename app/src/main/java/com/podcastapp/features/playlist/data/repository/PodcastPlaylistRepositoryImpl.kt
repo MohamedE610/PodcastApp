@@ -1,5 +1,7 @@
 package com.podcastapp.features.playlist.data.repository
 
+import com.podcastapp.core.extension.emitFlow
+import com.podcastapp.core.extension.flatMapFlow
 import com.podcastapp.features.playlist.data.source.map
 import com.podcastapp.features.playlist.data.source.remote.PodcastRemoteDataSource
 import com.podcastapp.features.playlist.domain.PlayList
@@ -16,7 +18,9 @@ class PodcastPlaylistRepositoryImpl @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     override suspend fun getPlaylist(): Flow<PlayList> {
         return remoteDataSource.login()
-            .flatMapConcat { remoteDataSource.getPlaylist(it.accessToken) }
+            .flatMapFlow {
+                remoteDataSource.getPlaylist(it.accessToken)
+            }
             .map { it.map() }
     }
 

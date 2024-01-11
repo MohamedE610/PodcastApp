@@ -10,10 +10,10 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface PodcastApi {
-    @POST("/api/auth/login")
+    @POST("api/auth/login")
     suspend fun login(@Body body: LoginBody = LoginBody()): UserToken
 
-    @GET("/api/playlist/{playlist_id}")
+    @GET("api/playlist/{playlist_id}")
     suspend fun getPlayList(
         @Header("Authorization") token: String,
         @Path("playlist_id") playlistId: String = PODCAST_PLAY_LIST_ID

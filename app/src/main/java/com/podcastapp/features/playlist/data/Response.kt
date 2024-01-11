@@ -41,7 +41,7 @@ data class PlayListInfoData(
     val type: String,
     @SerializedName("name")
     val name: String,
-    @SerializedName("desc")
+    @SerializedName("description")
     val desc: String,
     @SerializedName("image")
     val image: String,
@@ -76,7 +76,7 @@ data class EpisodeData(
     val type: Int,
     @SerializedName("name")
     val name: String,
-    @SerializedName("desc")
+    @SerializedName("description")
     val desc: String,
     @SerializedName("image")
     val image: String,
