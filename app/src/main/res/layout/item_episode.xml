@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="16dp">
+
+    <View
+        android:id="@+id/view_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_global_low"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_episode"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ImageViewWithRoundedCorners8dp"
+        tools:src="@drawable/ic_placeholder" />
+
+    <TextView
+        android:id="@+id/tv_episode_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="viewStart"
+        android:textColor="@color/chimney_sweep_800"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/img_play"
+        app:layout_constraintStart_toEndOf="@+id/img_episode"
+        app:layout_constraintTop_toTopOf="@id/img_episode"
+        tools:text="لماذا نتوقف شهرين قبل كأس العالم؟" />
+
+    <TextView
+        android:id="@+id/tv_podcast_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAlignment="viewStart"
+        android:textColor="@color/chimney_sweep_800"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_episode_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_episode_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_episode_title"
+        tools:text="مرتدة" />
+
+    <TextView
+        android:id="@+id/tv_release_date_and_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/chimney_sweep_800"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_episode_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_podcast_title"
+        tools:text="اكتوبر 2020 . 23 دقيقة" />
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="4dp"
+        android:indeterminateTint="@color/blue"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/img_play"
+        app:layout_constraintEnd_toStartOf="@id/img_play"
+        app:layout_constraintTop_toTopOf="@id/img_play"
+        app:layout_constraintVertical_bias=".6" />
+
+    <ImageView
+        android:id="@+id/img_play"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/ic_play"
+        app:layout_constraintEnd_toStartOf="@+id/img_menu"
+        app:layout_constraintTop_toTopOf="@+id/img_episode" />
+
+    <ImageView
+        android:id="@+id/img_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/img_episode" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
