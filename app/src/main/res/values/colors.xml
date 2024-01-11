@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="black_10">#10000000</color>
+    <color name="black_30">#30000000</color>
+    <color name="black_50">#50000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -9,4 +12,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="blue_grey">#607D8B</color>
     <color name="dark_blue_grey">#455A64</color>
+    <color name="light_global_low">#ECEDF0</color>
+    <color name="chimney_sweep_800">#1C222B</color>
+    <color name="chimney_sweep_400">#A3A5A7</color>
+    <color name="blue">#2972F3</color>
 </resources>
