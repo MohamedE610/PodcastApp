@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">PodcastApp</string>
+    <string name="app_name">Podcast App</string>
+
+    <string name="lbl_general_error_msg">حدث خطاء ما، الرجاء المحاولة مرة اخرى</string>
+    <string name="lbl_no_connection_error_msg">الرجاء التحقق من اتصالك بالانترنت</string>
+    <string name="lbl_episode_release_date_and_duration">%s . %s</string>
+    <string name="lbl_reminder_timer_hours">" ساعة"</string>
+    <string name="lbl_reminder_timer_minutes">" دقيقة"</string>
+    <string name="lbl_reminder_timer_sparator">" : "</string>
+    <string name="lbl_home">الرئيسية</string>
+    <string name="lbl_search">البحث</string>
+    <string name="lbl_library">المكتبة</string>
+    <string name="lbl_play_random">تشغيل متنوع</string>
+    <string name="lbl_episodes">الحلقات</string>
+    <string name="lbl_episode_no_and_total_duration">%s حلقة . %s</string>
+
 </resources>
