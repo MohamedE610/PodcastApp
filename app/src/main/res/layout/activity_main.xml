@@ -1,18 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    tools:background="@color/white"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fitsSystemWindows="false">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_playlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@color/blue_grey"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_playlist_shadow"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/black_gradient"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_more"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_like"
+                    app:layout_constraintEnd_toStartOf="@+id/img_more"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_playlist_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="24dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    app:layout_constraintTop_toBottomOf="@+id/img_more"
+                    app:layout_constraintVertical_bias=".25"
+                    tools:text="مختارات متنوعة من بودكاست فنجان" />
+
+                <TextView
+                    android:id="@+id/tv_playlist_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="16dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_playlist_title"
+                    app:layout_constraintVertical_bias="0"
+                    tools:text="كل يوم أحد. ضيف معي أنا عبدالرحمن أبومالح. في بودكاست فنجان، سنأخذ من كل مذاق رشفة. لا معايير، ولا مواضيع محددة، لكن الأكيد، هنا كثير من المتعة والفائدة." />
+
+                <ImageView
+                    android:id="@+id/img_play"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/ic_play"
+                    app:layout_constraintBottom_toTopOf="@+id/view_rounded"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_playlist_desc" />
+
+                <ImageView
+                    android:id="@+id/img_download"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/ic_download"
+                    app:layout_constraintBottom_toTopOf="@+id/view_rounded"
+                    app:layout_constraintEnd_toStartOf="@+id/img_more"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_playlist_desc" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_play_random"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/blue"
+                    android:includeFontPadding="false"
+                    android:text="@string/lbl_play_random"
+                    android:textColor="@color/white"
+                    app:icon="@drawable/ic_random"
+                    app:layout_constraintBottom_toTopOf="@+id/view_rounded"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_playlist_desc" />
+
+                <View
+                    android:id="@+id/view_rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:background="@drawable/bg_white_rounded"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginTop="24dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/Theme.MyApplication.PopupOverlay">
+                <TextView
+                    android:id="@+id/tv_toolbar_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    tools:text="مختارات متنوعة من بودكاست فنجان" />
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include
+        android:id="@+id/playlist_content"
+        layout="@layout/content_playlist" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="8dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/white"
+            app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+            app:itemIconTint="@color/bottom_nav_bar_color"
+            app:itemTextAppearanceActiveBoldEnabled="true"
+            app:itemTextColor="@color/bottom_nav_bar_color"
+            app:menu="@menu/bottom_nav_menu" />
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
