@@ -25,7 +25,7 @@ fun String.formatDate(
     }
 }
 
-fun Context.getTimeInHoursMinSec(millisSec: Long): String {
+fun Context.getDurationInHoursMin(millisSec: Long): String {
     var millis = millisSec
     require(millis >= 0) { "Duration must be greater than zero!" }
     val hours = TimeUnit.MILLISECONDS.toHours(millis)
@@ -34,9 +34,12 @@ fun Context.getTimeInHoursMinSec(millisSec: Long): String {
     millis -= TimeUnit.MINUTES.toMillis(minutes)
     val seconds = TimeUnit.MILLISECONDS.toSeconds(millis)
     val sb = StringBuilder()
-    sb.append(if (hours < 10) "0${hours}" else hours)
-    sb.append(getString(R.string.lbl_reminder_timer_hours))
-    sb.append(getString(R.string.lbl_reminder_timer_sparator))
+    if (hours > 0) {
+        sb.append(if (hours < 10) "0${hours}" else hours)
+        sb.append(getString(R.string.lbl_reminder_timer_hours))
+        sb.append(getString(R.string.lbl_reminder_timer_sparator))
+    }
+
     sb.append(if (minutes < 10) "0${minutes}" else minutes)
     sb.append(getString(R.string.lbl_reminder_timer_minutes))
     return sb.toString()

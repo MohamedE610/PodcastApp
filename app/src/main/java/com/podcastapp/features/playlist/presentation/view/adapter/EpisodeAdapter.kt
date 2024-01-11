@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.podcastapp.R
 import com.podcastapp.core.extension.formatDate
-import com.podcastapp.core.extension.getTimeInHoursMinSec
+import com.podcastapp.core.extension.getDurationInHoursMin
 import com.podcastapp.core.extension.gone
 import com.podcastapp.core.extension.loadImage
 import com.podcastapp.core.extension.show
@@ -53,7 +53,7 @@ class EpisodeViewHolder(
             tvPodcastTitle.text = item.podcastName
             val releaseDate = item.releaseDate.formatDate()
             val episodeDuration =
-                itemView.context.getTimeInHoursMinSec(item.durationInSeconds.times(1000))
+                itemView.context.getDurationInHoursMin(item.durationInSeconds.times(1000))
             tvReleaseDateAndDuration.text = itemView.context.getString(
                 R.string.lbl_episode_release_date_and_duration,
                 releaseDate,

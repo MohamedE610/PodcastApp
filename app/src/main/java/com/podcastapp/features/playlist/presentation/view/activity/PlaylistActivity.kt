@@ -9,7 +9,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.podcastapp.R
 import com.podcastapp.core.exception.PodcastException
 import com.podcastapp.core.exception.getMessageShouldDisplay
-import com.podcastapp.core.extension.getTimeInHoursMinSec
+import com.podcastapp.core.extension.getDurationInHoursMin
 import com.podcastapp.core.extension.gone
 import com.podcastapp.core.extension.loadImage
 import com.podcastapp.core.extension.observe
@@ -119,7 +119,7 @@ class PlaylistActivity : AppCompatActivity() {
             playlistContent.tvEpisodesNoAndTotalDuration.text = getString(
                 R.string.lbl_episode_no_and_total_duration,
                 data.episodes.size.toString(),
-                getTimeInHoursMinSec(data.info.episodeTotalDuration.times(1000))
+                getDurationInHoursMin(data.info.episodeTotalDuration.times(1000))
             )
         }
     }
