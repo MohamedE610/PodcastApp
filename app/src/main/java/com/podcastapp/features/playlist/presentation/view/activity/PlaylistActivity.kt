@@ -10,9 +10,11 @@ import com.podcastapp.R
 import com.podcastapp.core.exception.PodcastException
 import com.podcastapp.core.exception.getMessageShouldDisplay
 import com.podcastapp.core.extension.getTimeInHoursMinSec
+import com.podcastapp.core.extension.gone
 import com.podcastapp.core.extension.loadImage
 import com.podcastapp.core.extension.observe
 import com.podcastapp.core.extension.setAppLanguage
+import com.podcastapp.core.extension.show
 import com.podcastapp.core.extension.showErrorSnackBar
 import com.podcastapp.core.extension.viewBinding
 import com.podcastapp.core.utils.AppBarStateChangeListener
@@ -94,6 +96,7 @@ class PlaylistActivity : AppCompatActivity() {
         hideLoading()
         adapter.submitItems(data.episodes)
         with(binding) {
+            playlistContent.root.show()
             imgPlaylist.loadImage(data.info.image, R.drawable.ic_placeholder)
             tvPlaylistTitle.text = data.info.name
             tvPlaylistDesc.text = data.info.desc
@@ -106,10 +109,17 @@ class PlaylistActivity : AppCompatActivity() {
     }
 
     private fun showLoading() {
-        //TODO
+        with(binding) {
+            appBarSkeleton.root.show()
+            playlistContentSk.root.show()
+        }
+
     }
 
     private fun hideLoading() {
-        //TODO
+        with(binding) {
+            appBarSkeleton.root.gone()
+            playlistContentSk.root.gone()
+        }
     }
 }

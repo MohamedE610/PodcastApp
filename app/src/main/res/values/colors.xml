@@ -16,4 +16,6 @@
     <color name="chimney_sweep_800">#1C222B</color>
     <color name="chimney_sweep_400">#A3A5A7</color>
     <color name="blue">#2972F3</color>
+    <color name="skeleton_color">#dddddd</color>
+
 </resources>

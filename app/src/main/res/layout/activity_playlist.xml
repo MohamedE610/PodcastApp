@@ -31,7 +31,7 @@
                     android:id="@+id/img_playlist"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:background="@color/blue_grey"
+                    android:background="@color/white"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -144,6 +144,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_playlist_desc" />
 
+                <include
+                    android:id="@+id/app_bar_skeleton"
+                    layout="@layout/app_bar_sk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/img_more" />
+
                 <View
                     android:id="@+id/view_rounded"
                     android:layout_width="match_parent"
@@ -170,8 +178,7 @@
                     android:maxLines="1"
                     android:textAlignment="viewStart"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
-                    tools:text="مختارات متنوعة من بودكاست فنجان" />
+                    android:textSize="18sp" />
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -179,7 +186,13 @@
 
     <include
         android:id="@+id/playlist_content"
-        layout="@layout/content_playlist" />
+        layout="@layout/content_playlist"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/playlist_content_sk"
+        layout="@layout/content_playlist_sk"
+        android:visibility="gone" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
