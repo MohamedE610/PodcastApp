@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="boldFontType">
+        <item name="fontFamily">@font/plex_sans_arabic_bold</item>
+    </style>
+
+    <style name="extraLightFontType">
+        <item name="fontFamily">@font/plex_sans_arabic_extra_light</item>
+    </style>
+
+    <style name="lightFontType">
+        <item name="fontFamily">@font/plex_sans_arabic_light</item>
+    </style>
+
+    <style name="mediumFontType">
+        <item name="fontFamily">@font/plex_sans_arabic_medium</item>
+    </style>
+
+    <style name="regularFontType">
+        <item name="fontFamily">@font/plex_sans_arabic_regular</item>
+    </style>
+
+    <style name="semiBoldFontType">
+        <item name="fontFamily">@font/plex_sans_arabic_semi_bold</item>
+    </style>
+
+    <style name="thinFontType">
+        <item name="fontFamily">@font/plex_sans_arabic_thin</item>
+    </style>
+</resources>
