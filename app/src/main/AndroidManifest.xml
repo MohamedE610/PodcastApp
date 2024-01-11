@@ -17,7 +17,7 @@
         android:theme="@style/Theme.PodcastApp"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".features.playlist.presentation.view.activity.PlaylistActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

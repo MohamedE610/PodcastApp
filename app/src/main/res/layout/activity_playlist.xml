@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
     tools:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".features.playlist.presentation.view.activity.PlaylistActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -160,6 +160,7 @@
                 android:layout_marginTop="24dp"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/Theme.MyApplication.PopupOverlay">
+
                 <TextView
                     android:id="@+id/tv_toolbar_title"
                     android:layout_width="match_parent"

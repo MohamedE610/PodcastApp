@@ -1,12 +1,12 @@
-package com.podcastapp
+package com.podcastapp.features.playlist.presentation.view.activity
 
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
+import com.podcastapp.R
 import com.podcastapp.core.exception.PodcastException
 import com.podcastapp.core.exception.getMessageShouldDisplay
 import com.podcastapp.core.extension.getTimeInHoursMinSec
@@ -16,7 +16,7 @@ import com.podcastapp.core.extension.setAppLanguage
 import com.podcastapp.core.extension.showErrorSnackBar
 import com.podcastapp.core.extension.viewBinding
 import com.podcastapp.core.utils.AppBarStateChangeListener
-import com.podcastapp.databinding.ActivityMainBinding
+import com.podcastapp.databinding.ActivityPlaylistBinding
 import com.podcastapp.features.playlist.presentation.EpisodeUI
 import com.podcastapp.features.playlist.presentation.PlaylistUI
 import com.podcastapp.features.playlist.presentation.view.EpisodeAdapter
@@ -25,9 +25,9 @@ import com.podcastapp.features.playlist.presentation.viewmodel.PodcastPlaylistVi
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class PlaylistActivity : AppCompatActivity() {
     private val viewModel by viewModels<PodcastPlaylistViewModel>()
-    private val binding by viewBinding(ActivityMainBinding::inflate)
+    private val binding by viewBinding(ActivityPlaylistBinding::inflate)
     private val adapter by lazy { EpisodeAdapter(::onPlayBtnClicked) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
             with(playlistContent) {
                 rvEpisodes.layoutManager =
-                    LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+                    LinearLayoutManager(this@PlaylistActivity, LinearLayoutManager.VERTICAL, false)
                 rvEpisodes.adapter = adapter
             }
         }
