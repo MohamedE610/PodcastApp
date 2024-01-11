@@ -1,7 +1,7 @@
-package com.podcastapp.features.playlist.data
+package com.podcastapp.utils
 
-import com.google.gson.Gson
 import com.podcastapp.core.extension.getObjFromJson
+import com.podcastapp.features.playlist.data.PlayListResponse
 
 fun getMockedPlaylistResponse(): PlayListResponse {
     return playlistJson.getObjFromJson()

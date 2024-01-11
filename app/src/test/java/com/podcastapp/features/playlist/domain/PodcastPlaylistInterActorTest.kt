@@ -1,7 +1,7 @@
 package com.podcastapp.features.playlist.domain
 
 import com.podcastapp.core.extension.emitFlow
-import com.podcastapp.features.playlist.data.getMockedPlaylistResponse
+import com.podcastapp.utils.getMockedPlaylistResponse
 import com.podcastapp.features.playlist.data.repository.PodcastPlaylistRepositoryImpl
 import com.podcastapp.features.playlist.data.source.map
 import kotlinx.coroutines.flow.singleOrNull

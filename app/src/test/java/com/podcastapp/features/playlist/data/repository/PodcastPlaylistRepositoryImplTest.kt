@@ -2,7 +2,7 @@ package com.podcastapp.features.playlist.data.repository
 
 import com.podcastapp.core.extension.emitFlow
 import com.podcastapp.features.playlist.data.UserToken
-import com.podcastapp.features.playlist.data.getMockedPlaylistResponse
+import com.podcastapp.utils.getMockedPlaylistResponse
 import com.podcastapp.features.playlist.data.source.map
 import com.podcastapp.features.playlist.data.source.remote.PodcastRemoteDataSource
 import kotlinx.coroutines.flow.singleOrNull
