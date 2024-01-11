@@ -21,16 +21,25 @@ import com.podcastapp.core.utils.AppBarStateChangeListener
 import com.podcastapp.databinding.ActivityPlaylistBinding
 import com.podcastapp.features.playlist.presentation.EpisodeUI
 import com.podcastapp.features.playlist.presentation.PlaylistUI
-import com.podcastapp.features.playlist.presentation.view.EpisodeAdapter
+import com.podcastapp.features.playlist.presentation.view.adapter.EpisodeAdapter
 import com.podcastapp.features.playlist.presentation.viewmodel.PodcastPlaylistState
 import com.podcastapp.features.playlist.presentation.viewmodel.PodcastPlaylistViewModel
+import com.podcastapp.mediaplayer.MediaPlayerDelegate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PlaylistActivity : AppCompatActivity() {
     private val viewModel by viewModels<PodcastPlaylistViewModel>()
     private val binding by viewBinding(ActivityPlaylistBinding::inflate)
-    private val adapter by lazy { EpisodeAdapter(::onPlayBtnClicked) }
+    private val adapter by lazy { EpisodeAdapter(::onPlay, ::onPause) }
+
+    private val mediaPlayerDelegate by lazy {
+        MediaPlayerDelegate().also {
+            it.onMediaStarted = { viewModel.handleOnMediaStarted() }
+            it.onMediaCompleted = { viewModel.handleOnMediaCompleted() }
+            it.onError = { viewModel.handleOnMediaError() }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,8 +57,6 @@ class PlaylistActivity : AppCompatActivity() {
     private fun initViews() {
         with(binding) {
             imgBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
-            imgPlay.setOnClickListener { handlePlayAllInOrderLogic() }
-            btnPlayRandom.setOnClickListener { handlePlayAllRandomlyLogic() }
             appBar.addOnOffsetChangedListener(object : AppBarStateChangeListener() {
                 override fun onStateChanged(appBarLayout: AppBarLayout?, state: State?) {
                     if (state == State.COLLAPSED)
@@ -67,25 +74,34 @@ class PlaylistActivity : AppCompatActivity() {
         }
     }
 
-    private fun handlePlayAllRandomlyLogic() {
-        //TODO("Not yet implemented")
+    private fun onPlay(episode: EpisodeUI) {
+        viewModel.handleOnPlayLogic(episode)
+        mediaPlayerDelegate.play(episode.audioLink)
     }
 
-    private fun handlePlayAllInOrderLogic() {
-        //TODO("Not yet implemented")
-    }
-
-    private fun onPlayBtnClicked(episode: EpisodeUI) {
-        //TODO("Not yet implemented")
+    private fun onPause(episode: EpisodeUI) {
+        viewModel.handleOnPauseLogic(episode)
+        mediaPlayerDelegate.pause()
     }
 
     private fun onScreenStateChanged(state: PodcastPlaylistState) {
         when (state) {
             is PodcastPlaylistState.Loading -> showLoading()
             is PodcastPlaylistState.Success -> handleSuccessState(state.data)
+            is PodcastPlaylistState.UpdatedData -> handleUpdatedDataState(state.data)
             is PodcastPlaylistState.Error -> handleErrorState(state.ex)
+            is PodcastPlaylistState.MediaError -> handleMediaErrorState(state.data, state.ex)
             is PodcastPlaylistState.Initial -> Unit
         }
+    }
+
+    private fun handleMediaErrorState(data: PlaylistUI, ex: PodcastException) {
+        adapter.submitItems(data.episodes)
+        handleErrorState(ex)
+    }
+
+    private fun handleUpdatedDataState(data: PlaylistUI) {
+        adapter.submitItems(data.episodes)
     }
 
     private fun handleErrorState(ex: PodcastException) {
@@ -121,5 +137,10 @@ class PlaylistActivity : AppCompatActivity() {
             appBarSkeleton.root.gone()
             playlistContentSk.root.gone()
         }
+    }
+
+    override fun onDestroy() {
+        mediaPlayerDelegate.release()
+        super.onDestroy()
     }
 }

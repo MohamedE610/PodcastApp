@@ -10,6 +10,7 @@ data class PlaylistUI(
 data class EpisodeUI(
     val id: String,
     val state: MediaState,
+    val isLoading: Boolean,
     val name: String,
     val desc: String,
     val image: String,
@@ -24,7 +25,6 @@ data class EpisodeUI(
 
 sealed class MediaState {
     data object Idle : MediaState()
-    data object Loading : MediaState()
-    data class Play(val currentPosition: Long) : MediaState()
-    data class Pause(val currentPosition: Long) : MediaState()
+    data object Play : MediaState()
+    data object Pause : MediaState()
 }

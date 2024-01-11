@@ -1,4 +1,4 @@
-package com.podcastapp.features.playlist.presentation.view
+package com.podcastapp.features.playlist.presentation.view.adapter
 
 import android.annotation.SuppressLint
 import android.view.ViewGroup
@@ -16,12 +16,13 @@ import com.podcastapp.features.playlist.presentation.EpisodeUI
 import com.podcastapp.features.playlist.presentation.MediaState
 
 class EpisodeAdapter(
-    private val onPlayBtnClicked: (EpisodeUI) -> Unit
+    private val onPlay: (EpisodeUI) -> Unit,
+    private val onPause: (EpisodeUI) -> Unit
 ) : Adapter<EpisodeViewHolder>() {
     private val items = arrayListOf<EpisodeUI>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeViewHolder {
-        return EpisodeViewHolder(parent.viewBinding(ItemEpisodeBinding::inflate), onPlayBtnClicked)
+        return EpisodeViewHolder(parent.viewBinding(ItemEpisodeBinding::inflate), onPlay, onPause)
     }
 
     override fun getItemCount(): Int {
@@ -42,7 +43,8 @@ class EpisodeAdapter(
 
 class EpisodeViewHolder(
     private val binding: ItemEpisodeBinding,
-    private val onPlayBtnClicked: (EpisodeUI) -> Unit
+    private val onPlay: (EpisodeUI) -> Unit,
+    private val onPause: (EpisodeUI) -> Unit
 ) : ViewHolder(binding.root) {
     fun bind(item: EpisodeUI) {
         with(binding) {
@@ -58,7 +60,15 @@ class EpisodeViewHolder(
                 episodeDuration
             )
 
-            imgPlay.setOnClickListener { onPlayBtnClicked(item) }
+            imgPlay.setOnClickListener {
+                when (item.state) {
+                    is MediaState.Idle, MediaState.Pause -> onPlay(item)
+                    is MediaState.Play -> onPause(item)
+                }
+            }
+
+            if (item.isLoading) pbLoading.show() else pbLoading.gone()
+
             bindEpisodeState(item.state)
         }
     }
@@ -66,9 +76,7 @@ class EpisodeViewHolder(
     private fun ItemEpisodeBinding.bindEpisodeState(state: MediaState) {
         when (state) {
             is MediaState.Idle, is MediaState.Pause -> imgPlay.setImageResource(R.drawable.ic_play)
-            is MediaState.Loading, is MediaState.Play -> imgPlay.setImageResource(R.drawable.ic_pause)
+            is MediaState.Play -> imgPlay.setImageResource(R.drawable.ic_pause)
         }
-
-        if (state == MediaState.Loading) pbLoading.show() else pbLoading.gone()
     }
 }

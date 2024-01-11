@@ -36,7 +36,7 @@
         android:textAppearance="@style/semiBoldFontType"
         android:textColor="@color/chimney_sweep_800"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/pb_loading"
+        app:layout_constraintEnd_toStartOf="@+id/img_play"
         app:layout_constraintStart_toEndOf="@+id/img_episode"
         app:layout_constraintTop_toTopOf="@id/img_episode"
         tools:text="لماذا نتوقف شهرين قبل كأس العالم؟" />
@@ -69,13 +69,14 @@
         android:id="@+id/pb_loading"
         android:layout_width="16dp"
         android:layout_height="16dp"
+        android:layout_margin="8dp"
         android:layout_marginEnd="4dp"
         android:indeterminateTint="@color/blue"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/img_play"
-        app:layout_constraintEnd_toStartOf="@id/img_play"
-        app:layout_constraintTop_toTopOf="@id/img_play"
-        app:layout_constraintVertical_bias=".6" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias=".6"
+        tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/img_play"

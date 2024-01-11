@@ -201,7 +201,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:cardBackgroundColor="@color/white"
-        app:cardElevation="8dp">
+        app:cardElevation="4dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"

@@ -14,6 +14,7 @@ fun Episode.map(): EpisodeUI {
     return EpisodeUI(
         id = id,
         state = MediaState.Idle,
+        isLoading = false,
         name = name,
         desc = desc,
         image = image,
